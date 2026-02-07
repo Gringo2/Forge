@@ -24,8 +24,8 @@ export default function Hero() {
             </h1>
 
             <p className="max-w-2xl text-lg md:text-xl text-center text-text-secondary mb-12 leading-relaxed">
-                Forge transforms interface logic into optimized reactive views.
-                Structure + Heat. No artboards, just pure coordination.
+                Forge transforms interface logic into optimized reactive views. <br />
+                Compiling directly to <span className="text-white">React</span>, <span className="text-white">React Native</span>, and <span className="text-white">Flutter</span>.
             </p>
 
             <div className="flex flex-col md:flex-row gap-4">

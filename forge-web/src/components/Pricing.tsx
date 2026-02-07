@@ -8,7 +8,7 @@ export default function Pricing() {
             name: "DEVELOPER_LICENSE",
             model: "NODE_LOCKED",
             spec: "Indiv. Research Environment",
-            terms: ["1x Project Context", "Local Runtime Only", "Standard Reactivity", "Void Export Access"],
+            terms: ["1x Project Context", "Web (React) Export", "Standard Reactivity", "Void Export Access"],
             cta: "Acquire License",
             highlight: false
         },
@@ -16,7 +16,7 @@ export default function Pricing() {
             name: "INDUSTRIAL_CONTRACT",
             model: "TEAM_WIDE",
             spec: "Production Grade Tools",
-            terms: ["∞ Project Context", "Compiling Cloud Sync", "Advanced Heat Vectoring", "High-Priority Transmission"],
+            terms: ["∞ Project Context", "Web + Mobile (Flutter) Export", "Advanced Heat Vectoring", "High-Priority Transmission"],
             cta: "Execute Contract",
             highlight: true
         },
@@ -24,7 +24,7 @@ export default function Pricing() {
             name: "INFRASTRUCTURE_PARTNER",
             model: "ECOSYSTEM_WIDE",
             spec: "Deep-Scale Integration",
-            terms: ["Proprietary Compilers", "99.9% Up-time SLA", "Thermal Recovery Support", "On-Prem Transmission"],
+            terms: ["Proprietary Compilers", "Full Multi-Platform Sync", "Thermal Recovery Support", "On-Prem Transmission"],
             cta: "Establish Link",
             highlight: false
         }

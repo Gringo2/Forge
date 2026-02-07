@@ -19,7 +19,8 @@ export default function DashboardPreview() {
             const msgs = [
                 `> OPTIMIZING_ROUTE: 0x${Math.floor(Math.random() * 9999).toString(16)}`,
                 `> HEAT_DISSIPATION: ${heat}%`,
-                "> RE-RENDERING_DOM_TREE...",
+                "> COMPILING_TARGET: REACT_NATIVE",
+                "> COMPILING_TARGET: FLUTTER",
                 "> SYNCING_NODES...",
                 `> ALLOCATING_MEMORY: ${Math.floor(Math.random() * 500)}MB`
             ];

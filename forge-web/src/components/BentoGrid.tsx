@@ -31,13 +31,13 @@ export default function BentoGrid() {
             ),
         },
         {
-            title: "Heat Transformation",
-            description: "Instant hot-module compilation for immediate visual feedback.",
+            title: "Multi-Platform Export",
+            description: "Compile directly to React, React Native, and Flutter with zero overhead.",
             className: "md:col-span-1 md:row-span-1",
-            tag: "REACTIVE",
+            tag: "TRANSPILE",
             icon: (
                 <svg viewBox="0 0 24 24" className="w-8 h-8 text-magma-end" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 12h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                    <path d="M8 7h12m0 0l-4-4m4 4l-4 4m-8 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
             ),
         },

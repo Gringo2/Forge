@@ -10,11 +10,11 @@ export default function StatusTicker() {
     const messages = [
         "LOG: COMPILER_READY",
         "TEMP: 1450K (STABLE)",
-        "MODULE: IRON_STORAGE (OK)",
+        "EXPORT_TARGET: REACT_WEB",
+        "EXPORT_TARGET: REACT_NATIVE",
+        "EXPORT_TARGET: FLUTTER",
         "ENGINE: REACTIVE_SYMMETRY_CORE_v4.2",
-        "TRANS: HEAT_VECTOR_0xAF32",
         "STATUS: RADIATING...",
-        "OPS: SYSTEM_ZERO_LINK_ACTIVE",
         "MEM: 12.4GB TOTAL/STRUCT",
     ];
 
