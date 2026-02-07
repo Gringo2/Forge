@@ -1,0 +1,31 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="20" fill="#090A0B"/>
+  <rect x="0.5" y="0.5" width="1199" height="799" rx="19.5" stroke="#1F2937"/>
+  
+  <!-- Header / Window Controls -->
+  <rect width="1200" height="40" rx="20" fill="#161B22"/>
+  <rect x="20" y="15" width="10" height="10" rx="5" fill="#FF5F56"/>
+  <rect x="40" y="15" width="10" height="10" rx="5" fill="#FFBD2E"/>
+  <rect x="60" y="15" width="10" height="10" rx="5" fill="#27C93F"/>
+  <text x="540" y="25" fill="#8B949E" font-family="JetBrains Mono" font-size="12">forge-compiler --v4.2.0</text>
+  
+  <!-- Content Area -->
+  <text x="40" y="80" fill="#FF3D00" font-family="JetBrains Mono" font-size="14" font-weight="bold">forge > compile --structure=iron --heat=1450K</text>
+  <text x="40" y="110" fill="#8B949E" font-family="JetBrains Mono" font-size="14">[INFO] Initializing Iron Engine...</text>
+  <text x="40" y="130" fill="#8B949E" font-family="JetBrains Mono" font-size="14">[INFO] Loading reactive streams...</text>
+  <text x="40" y="150" fill="#8B949E" font-family="JetBrains Mono" font-size="14">[INFO] Projecting layout vectors...</text>
+  
+  <!-- Progress Bar -->
+  <rect x="40" y="180" width="400" height="4" rx="2" fill="#1F2937"/>
+  <rect x="40" y="180" width="280" height="4" rx="2" fill="#FF3D00"/>
+  <text x="450" y="185" fill="#FF3D00" font-family="JetBrains Mono" font-size="12">70%</text>
+  
+  <!-- Visualizer Grid -->
+  <rect x="40" y="220" width="1120" height="540" rx="10" fill="#161B22" stroke="#1F2937"/>
+  <path d="M40 320 H1160 M40 420 H1160 M40 520 H1160 M40 620 H1160" stroke="#1F2937" stroke-width="0.5"/>
+  <path d="M140 220 V760 M240 220 V760 M340 220 V760 M440 220 V760" stroke="#1F2937" stroke-width="0.5"/>
+  
+  <!-- Molten Waveform -->
+  <path d="M40 600 Q 140 400 240 600 T 440 600 T 640 600 T 840 600 T 1040 600 T 1160 600" stroke="#FF9100" stroke-width="2" opacity="0.6"/>
+  <path d="M40 620 Q 140 420 240 620 T 440 620 T 640 620 T 840 620 T 1040 620 T 1160 620" stroke="#FF3D00" stroke-width="3"/>
+</svg>

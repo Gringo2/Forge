@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --background: #090a0b;
+  --foreground: #f0f6fc;
+
+  /* Forge Branding */
+  --magma-start: #FF3D00;
+  --magma-end: #FF9100;
+  --void: #090A0B;
+  --surface: #161B22;
+  --iron-dark: #1f2937;
+  --iron-light: #374151;
+  --border: #30363d;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Forge Colors */
+  --color-magma-start: var(--magma-start);
+  --color-magma-end: var(--magma-end);
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-iron-dark: var(--iron-dark);
+  --color-iron-light: var(--iron-light);
+  --color-zinc-border: var(--border);
+  --color-text-secondary: var(--text-secondary);
+
+  /* Animations */
+  --animate-shimmer: shimmer 2s linear indefinite;
+  --animate-pulse-magma: pulse-magma 3s ease-in-out infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes pulse-magma {
+
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Industrial Styles */
+.forge-glass {
+  background: rgba(22, 27, 34, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.magma-text {
+  background: linear-gradient(90deg, var(--magma-start), var(--magma-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-forge {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-forge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent);
+  transition: 0.5s;
+}
+
+.btn-forge:hover::after {
+  left: 100%;
+}
+
+.btn-forge:active {
+  transform: scale(0.98);
+}
+
+.magma-bg {
+  background: linear-gradient(90deg, var(--magma-start), var(--magma-end));
+}
+
+.btn-forge {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: all 0.2s;
+}
+
+.btn-forge:hover {
+  transform: translateY(-2px);
+}
