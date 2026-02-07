@@ -1,48 +1,46 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { AppRegistry } from "@/components/AppRegistry";
+import Navbar from "@/components/Navbar";
+import SystemFooter from "@/components/SystemFooter";
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono"
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
   subsets: ["latin"],
+  variable: "--font-jetbrains-mono"
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Forge | The Interface Compiler",
-  description: "Transforming structure through heat. Forge is the premier interface coordination system for the System Zero ecosystem.",
-  keywords: ["Interface Compiler", "System Zero", "Reactive Design", "Infrastructure", "Industrial Design"],
-  openGraph: {
-    title: "Forge | The Interface Compiler",
-    description: "Industrial-grade interface coordination system.",
-    type: "website",
-    locale: "en_US",
-    url: "https://forge.systemzero.io",
-    siteName: "Forge",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Forge | The Interface Compiler",
-    description: "Industrial-grade interface coordination system.",
-    creator: "@systemzero",
-  },
+  description: "A reactive UI compiler for high-performance web applications.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased selection:bg-magma-start/30 selection:text-white`}
-      >
-        {children}
+      <body className={`${inter.variable} ${spaceMono.variable} ${jetbrainsMono.variable} bg-void text-text-primary antialiased selection:bg-magma-start selection:text-white overflow-x-hidden`}>
+        <AppRegistry>
+          <Navbar />
+          <main className="min-h-screen relative z-10">
+            {children}
+          </main>
+          <SystemFooter />
+        </AppRegistry>
       </body>
     </html>
   );

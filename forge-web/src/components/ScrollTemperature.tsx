@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, useScroll, useSpring } from "framer-motion";
+import { useSystem } from "@/context/SystemContext";
 
 export default function ScrollTemperature() {
+    const { heat } = useSystem();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -19,7 +21,7 @@ export default function ScrollTemperature() {
             <div className="absolute top-4 right-6 flex items-center gap-2 px-2 py-1 rounded border border-zinc-border bg-void/80 backdrop-blur-sm pointer-events-none">
                 <div className="w-1.5 h-1.5 rounded-full bg-magma-start animate-pulse" />
                 <span className="font-mono text-[8px] text-text-secondary uppercase tracking-widest leading-none">
-                    HEAT_LEVEL
+                    SYS_TEMP: {heat}%
                 </span>
             </div>
         </div>

@@ -48,26 +48,32 @@ export default function ProcessFlow() {
 
     return (
         <section id="process" className="py-24 px-6 bg-void relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-text-secondary mb-16 border-b border-zinc-border pb-4">
+            <div className="max-w-7xl mx-auto relative">
+                {/* Central Connector Line */}
+                <div className="absolute left-[50%] top-32 bottom-32 w-px bg-zinc-800 hidden md:block -translate-x-1/2">
+                    <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-transparent via-magma-start to-transparent animate-pulse" />
+                </div>
+
+                <h2 className="text-sm font-bold uppercase tracking-widest text-text-secondary mb-24 border-b border-zinc-border pb-4 w-full">
                     02. The Compilation Lifecycle
                 </h2>
 
-                <div className="flex flex-col gap-32">
+                <div className="flex flex-col gap-32 relative z-10">
                     {steps.map((step, idx) => (
-                        <div key={idx} className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-16`}>
+                        <div key={idx} className={`flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-16 group`}>
                             <div className="flex-1">
-                                <div className="text-5xl font-black text-white/10 mb-4">{step.number}</div>
-                                <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">{step.title}</h3>
+                                <div className="text-5xl font-black text-white/10 mb-4 group-hover:text-magma-start/20 transition-colors">{step.number}</div>
+                                <h3 className="text-3xl font-bold text-white mb-6 tracking-tight group-hover:text-magma-text transition-colors">{step.title}</h3>
                                 <p className="text-text-secondary text-lg leading-relaxed mb-8">
                                     {step.description}
                                 </p>
                                 <div className="flex items-center gap-4">
-                                    <div className="h-[1px] flex-1 bg-zinc-border" />
+                                    <div className="h-[1px] flex-1 bg-zinc-border group-hover:bg-magma-start transition-colors" />
                                     <span className="font-mono text-xs text-magma-start">READY_FOR_FRAME</span>
                                 </div>
                             </div>
-                            <div className="flex-1 w-full aspect-square md:aspect-video forge-glass rounded-2xl overflow-hidden border border-zinc-border/50">
+                            <div className="flex-1 w-full aspect-square md:aspect-video forge-glass rounded-2xl overflow-hidden border border-zinc-border/50 group-hover:border-magma-start/50 transition-colors shadow-2xl relative">
+                                <div className="absolute inset-0 bg-magma-start/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                                 {step.image}
                             </div>
                         </div>

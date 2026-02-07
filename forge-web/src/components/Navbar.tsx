@@ -2,8 +2,24 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
-            <div className="forge-glass flex items-center justify-between w-full max-w-6xl px-6 py-3 rounded-full">
+        <nav className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
+            {/* Live Telemetry Bar */}
+            <div className="w-full bg-void/80 backdrop-blur-md border-b border-zinc-border/30 px-6 py-1 flex justify-between items-center font-mono text-[8px] text-text-secondary uppercase tracking-[0.2em]">
+                <div className="flex gap-6">
+                    <span className="flex items-center gap-1.5">
+                        <span className="w-1 h-1 rounded-full bg-magma-start animate-pulse" />
+                        SYS_STATUS: OPERATIONAL
+                    </span>
+                    <span>LATENCY: 12ms</span>
+                    <span>UPTIME: 99.99%</span>
+                </div>
+                <div className="flex gap-6">
+                    <span>STRAT_VECTOR: 0x88AF3</span>
+                    <span>LOCAL_REF: {new Date().toLocaleTimeString()}</span>
+                </div>
+            </div>
+
+            <div className="forge-glass flex items-center justify-between w-full max-w-6xl px-6 py-3 rounded-full mt-4">
                 <Link href="/" className="flex items-center gap-3 group">
                     <div className="w-8 h-8 rounded-lg bg-surface border border-zinc-border flex items-center justify-center overflow-hidden">
                         <svg viewBox="0 0 100 100" className="w-6 h-6">

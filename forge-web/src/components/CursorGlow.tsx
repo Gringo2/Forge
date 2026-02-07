@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
+import { useSystem } from "@/context/SystemContext";
 
 export default function CursorGlow() {
+    const { heat } = useSystem();
     const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
 
     const springX = useSpring(-100, { stiffness: 150, damping: 25 });
@@ -27,7 +29,12 @@ export default function CursorGlow() {
             }}
         >
             <motion.div
-                className="absolute w-[400px] h-[400px] rounded-full bg-magma-start/10 blur-[100px]"
+                className="absolute rounded-full bg-magma-start blur-[100px]"
+                animate={{
+                    width: 400 + (heat * 2),
+                    height: 400 + (heat * 2),
+                    opacity: 0.1 + (heat / 500)
+                }}
                 style={{
                     x: springX,
                     y: springY,

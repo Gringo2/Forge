@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useSystem } from "@/context/SystemContext";
 
 export default function Playground() {
-    const [heat, setHeat] = useState(50);
-    const [structure, setStructure] = useState(50);
+    const { heat, structure, setHeat, setStructure } = useSystem();
 
     return (
         <section id="playground" className="py-24 px-6 bg-void relative overflow-hidden">
@@ -15,7 +14,7 @@ export default function Playground() {
                         <h2 className="text-sm font-bold uppercase tracking-widest text-text-secondary mb-4 border-b border-zinc-border pb-4 inline-block">
                             09. Reactive Playground
                         </h2>
-                        <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                        <h3 className={`text-4xl md:text-5xl font-bold text-white tracking-tight transition-all duration-300 ${heat > 95 ? "text-stress" : ""}`}>
                             Adjust the <span className="magma-text">Variables.</span>
                         </h3>
                         <p className="mt-6 text-text-secondary text-lg leading-relaxed max-w-xl">
@@ -68,6 +67,17 @@ export default function Playground() {
                                 <span>Malleable</span>
                                 <span>Reinforced Iron</span>
                             </div>
+                        </div>
+
+                        {/* Meltdown Trigger */}
+                        <div className="pt-4">
+                            <button
+                                onClick={() => setHeat(100)}
+                                className={`w-full py-4 font-mono text-xs font-bold tracking-[0.3em] uppercase border transition-all duration-500 overflow-hidden relative group ${heat > 95 ? "bg-magma-start text-white border-magma-start animate-pulse" : "border-zinc-border text-text-secondary hover:border-magma-start hover:text-magma-start"}`}
+                            >
+                                <span className="relative z-10">{heat > 95 ? "CRITICAL_MELTDOWN_ACTIVE" : "INITIATE_THERMAL_STRESS_TEST"}</span>
+                                <div className="absolute inset-0 bg-magma-start/10 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                            </button>
                         </div>
                     </div>
                 </div>

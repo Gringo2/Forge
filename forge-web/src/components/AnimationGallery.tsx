@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSystem } from "@/context/SystemContext";
 
 export default function AnimationGallery() {
+    const { heat } = useSystem();
     const animations = [
         {
             name: "Hydraulic Press",
@@ -83,8 +85,17 @@ export default function AnimationGallery() {
                             transition={{ delay: idx * 0.1 }}
                             className="flex flex-col items-center"
                         >
-                            <div className="w-full aspect-square bg-void rounded-xl border border-zinc-border group hover:border-magma-start transition-colors flex items-center justify-center p-8 overflow-hidden">
-                                {anim.content}
+                            <div className="aspect-square bg-void rounded-xl border border-zinc-border flex items-center justify-center p-8 group-hover:border-magma-start transition-colors relative overflow-hidden">
+                                <motion.div
+                                    className="w-full h-full"
+                                    animate={{
+                                        scale: 1 + (heat / 500),
+                                        filter: `hue-rotate(${heat / 2}deg) saturate(${1 + heat / 100})`
+                                    }}
+                                >
+                                    {anim.content}
+                                </motion.div>
+                                <div className="absolute inset-0 bg-magma-start/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                             </div>
                             <span className="mt-4 font-mono text-xs text-text-secondary uppercase tracking-widest">
                                 {anim.name}
