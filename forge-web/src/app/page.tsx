@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BentoGrid from "@/components/BentoGrid";
 import ProcessFlow from "@/components/ProcessFlow";
+import TargetOutput from "@/components/TargetOutput";
 import AnimationGallery from "@/components/AnimationGallery";
 import Ecosystem from "@/components/Ecosystem";
 import Pricing from "@/components/Pricing";
@@ -25,6 +26,7 @@ export default function Home() {
       <StatusTicker />
       <BentoGrid />
       <ProcessFlow />
+      <TargetOutput />
       <AnimationGallery />
       <Ecosystem />
       <Testimonials />
