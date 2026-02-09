@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: forge-web
+    env: node
+    region: oregon
+    plan: free
+    rootDir: forge-web
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
