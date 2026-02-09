@@ -8,19 +8,48 @@ export default function BentoGrid() {
     const { heat, structure } = useSystem();
     const features = [
         {
-            title: "Reactive Logic",
-            description: "Define interface state that compiles into pure reactive streams.",
-            className: "md:col-span-2 md:row-span-2",
-            tag: "REACTIVE",
+            title: "Vector-First Canvas",
+            description: "A sophisticated design environment built for deterministic synchrony. No handoff, no drift.",
+            className: "md:col-span-2 md:row-span-1",
+            tag: "DESIGN_CORE",
             icon: (
                 <svg viewBox="0 0 24 24" className="w-8 h-8 text-magma-start" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                    <path d="M2 2l7.586 7.586" />
+                    <circle cx="11" cy="11" r="2" />
                 </svg>
             ),
         },
         {
-            title: "Strict Structure",
-            description: "Iron-clad component hierarchies that never leak.",
+            title: "AI Semantic Synthesis",
+            description: "Vibedraw your product intent. Our AI semantic engine generates structured, production-ready vector layouts from simple text prompts.",
+            className: "md:col-span-1 md:row-span-1",
+            tag: "VIBEDRAW",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 text-magma-start animate-pulse" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    <path d="M12 7l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5L10 9h2V7z" fill="currentColor" />
+                </svg>
+            ),
+        },
+        {
+            title: "Pro-Grade Design Surface",
+            description: "A full-spectrum UI/UX environment that matches Figma's expressiveness with the precision of a compiler. Draw, prototype, and emit—all in one viewport.",
+            className: "md:col-span-1 md:row-span-1",
+            tag: "UX_ENV",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 text-magma-end" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2v20M2 12h20" />
+                    <path d="M12 12l7-7" />
+                    <circle cx="19" cy="5" r="2" />
+                </svg>
+            ),
+        },
+        {
+            title: "Deterministic Layouts",
+            description: "Vector geometry is converted directly into flexbox and grid logic. No guessing, just math.",
             className: "md:col-span-1 md:row-span-2",
             tag: "CORE",
             icon: (
@@ -31,24 +60,14 @@ export default function BentoGrid() {
             ),
         },
         {
-            title: "Multi-Platform Export",
-            description: "Compile directly to React, React Native, and Flutter with zero overhead.",
-            className: "md:col-span-1 md:row-span-1",
-            tag: "TRANSPILE",
-            icon: (
-                <svg viewBox="0 0 24 24" className="w-8 h-8 text-magma-end" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M8 7h12m0 0l-4-4m4 4l-4 4m-8 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-            ),
-        },
-        {
-            title: "Assembly Engine",
-            description: "Proprietary layout engine optimized for deterministic rendering.",
+            title: "Direct Repo Synchronization",
+            description: "Your UI/UX is the repository. Forge emits production-grade views directly into your codebase with binary-level precision.",
             className: "md:col-span-2 md:row-span-1",
-            tag: "CORE",
+            tag: "REPO_SYNC",
             icon: (
                 <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 3v19M5 8l14 8M19 8L5 16" />
+                    <rect x="9" y="10" width="6" height="4" rx="1" fill="currentColor" fillOpacity="0.2" />
                 </svg>
             ),
         },
@@ -93,7 +112,7 @@ function FeatureCard({ feature, index, heat, structure }: { feature: any, index:
 
     return (
         <motion.div
-            className={`relative p-8 border border-zinc-border rounded-2xl group overflow-hidden ${index === 0 ? "md:col-span-2 md:row-span-2" : index === 1 ? "md:col-span-1 md:row-span-2" : "md:col-span-1 md:row-span-1"} bg-void`}
+            className={`relative p-8 border border-zinc-border rounded-2xl group overflow-hidden ${feature.className} bg-void`}
             style={{
                 perspective: 1000,
                 rotateX,
@@ -109,6 +128,16 @@ function FeatureCard({ feature, index, heat, structure }: { feature: any, index:
                 <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-magma-start to-transparent" />
                 <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-magma-start to-transparent" />
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-magma-start to-transparent" />
+
+                {/* Spotlight Cursor Trace */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x)_var(--mouse-y),rgba(255,61,0,0.1),transparent_50%)]"
+                    style={{
+                        //@ts-ignore
+                        "--mouse-x": `${(x.get() + 0.5) * 100}%`,
+                        //@ts-ignore
+                        "--mouse-y": `${(y.get() + 0.5) * 100}%`
+                    }}
+                />
             </div>
 
             {/* Glass Background */}

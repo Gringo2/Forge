@@ -4,69 +4,14 @@ import { motion } from "framer-motion";
 import { useSystem } from "@/context/SystemContext";
 
 export default function TargetOutput() {
-    const { heat, structure } = useSystem();
-
-    const targets = [
-        {
-            name: "React Web",
-            format: "DESKTOP_DOM",
-            icon: (
-                <svg viewBox="0 0 100 60" className="w-full h-full text-zinc-700">
-                    <rect x="5" y="5" width="90" height="50" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />
-                    <rect x="5" y="5" width="90" height="8" rx="2" fill="currentColor" fillOpacity="0.1" />
-                    <circle cx="12" cy="9" r="1.5" fill="currentColor" />
-                    <circle cx="17" cy="9" r="1.5" fill="currentColor" />
-                    <circle cx="22" cy="9" r="1.5" fill="currentColor" />
-                    {/* Inner Content */}
-                    <g className="text-magma-start" opacity={0.6}>
-                        <rect x="15" y="20" width="30" height="5" rx="1" fill="currentColor" />
-                        <rect x="55" y="20" width="30" height="5" rx="1" fill="currentColor" />
-                        <rect x="15" y="30" width="70" height="15" rx="2" fill="currentColor" />
-                    </g>
-                </svg>
-            )
-        },
-        {
-            name: "React Native",
-            format: "IOS_NATIVE",
-            icon: (
-                <svg viewBox="0 0 50 100" className="w-full h-full text-zinc-700">
-                    <rect x="5" y="5" width="40" height="90" rx="6" fill="none" stroke="currentColor" strokeWidth="2" />
-                    <rect x="18" y="10" width="14" height="4" rx="2" fill="currentColor" />
-                    {/* Inner Content */}
-                    <g className="text-magma-start" opacity={0.6}>
-                        <circle cx="25" cy="30" r="10" fill="currentColor" />
-                        <rect x="10" y="50" width="30" height="4" rx="1" fill="currentColor" />
-                        <rect x="10" y="58" width="30" height="4" rx="1" fill="currentColor" />
-                        <rect x="10" y="66" width="30" height="4" rx="1" fill="currentColor" />
-                    </g>
-                </svg>
-            )
-        },
-        {
-            name: "Flutter",
-            format: "AOT_BINARY",
-            icon: (
-                <svg viewBox="0 0 50 100" className="w-full h-full text-zinc-700">
-                    <rect x="5" y="5" width="40" height="90" rx="6" fill="none" stroke="currentColor" strokeWidth="2" />
-                    {/* Flutter Logo approximation */}
-                    <path d="M25 20 L40 35 L25 50 L10 35 Z" fill="currentColor" fillOpacity="0.1" />
-                    {/* Inner Content */}
-                    <g className="text-magma-start" opacity={0.6}>
-                        <rect x="12" y="60" width="26" height="10" rx="2" fill="currentColor" />
-                        <rect x="12" y="75" width="26" height="10" rx="2" fill="currentColor" />
-                    </g>
-                </svg>
-            )
-        }
-    ];
+    const { heat } = useSystem();
 
     return (
         <section id="compilation" className="py-32 px-6 bg-void relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-zinc-border pb-4 gap-4">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-border pb-4 gap-4">
                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-text-secondary">
-                        06. TARGET_OUTPUT_SYNC
+                        05. NATIVE VIEW EMISSION
                     </h2>
                     <div className="font-mono text-[9px] text-magma-start flex gap-6">
                         <span>BINARY_SPEC: MT_77A</span>
@@ -74,98 +19,163 @@ export default function TargetOutput() {
                     </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-                    {/* Source: Molten UI */}
-                    <div className="flex-1 w-full max-w-md aspect-square relative forge-glass rounded-3xl border border-magma-start/30 p-12 overflow-hidden group">
-                        <div className="absolute inset-0 bg-[url('/assets/noise.png')] opacity-[0.05] pointer-events-none" />
-                        <div className="absolute top-4 left-6 font-mono text-[8px] text-magma-start uppercase tracking-widest">
-                            [SOURCE: MOLTEN_ARCHITEC]
-                        </div>
+                {/* Unified SVG Diagram */}
+                <div className="w-full aspect-[16/9] md:aspect-[21/9] relative">
+                    <svg viewBox="0 0 1400 600" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Background Grid */}
+                        <defs>
+                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgb(39 39 42)" strokeWidth="0.5" opacity="0.2" />
+                            </pattern>
+                            <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="rgb(255 61 0)" stopOpacity="0.1" />
+                                <stop offset="50%" stopColor="rgb(255 61 0)" stopOpacity="0.8" />
+                                <stop offset="100%" stopColor="rgb(255 61 0)" stopOpacity="0.1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
 
-                        {/* Molten Animation Area */}
-                        <div className="w-full h-full flex items-center justify-center relative">
-                            {/* Fluid background paths */}
-                            <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0 text-magma-start/10">
-                                <motion.path
-                                    d="M20 20 Q50 10 80 20 T80 80 Q50 90 20 80 T20 20"
-                                    fill="currentColor"
-                                    animate={{
-                                        d: [
-                                            "M20 20 Q50 10 80 20 T80 80 Q50 90 20 80 T20 20",
-                                            "M25 15 Q55 15 75 25 T85 75 Q45 95 15 75 T25 15",
-                                            "M20 20 Q50 10 80 20 T80 80 Q50 90 20 80 T20 20"
-                                        ]
-                                    }}
-                                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                                />
-                            </svg>
+                        <rect width="1400" height="600" fill="url(#grid)" />
 
-                            {/* Architectural Elements (The "Iron" in the lava) */}
-                            <div className="relative z-10 w-full grid grid-cols-2 gap-4">
-                                {Array.from({ length: 4 }).map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="h-20 border border-magma-start/40 rounded-lg bg-void/40 backdrop-blur-sm flex items-center justify-center"
-                                        animate={{
-                                            y: [0, -5, 0],
-                                            rotate: [(i - 1.5) * 5, (i - 1.5) * -5, (i - 1.5) * 5]
-                                        }}
-                                        transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
-                                    >
-                                        <div className="w-4 h-1 bg-magma-start/20 rounded" />
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
+                        {/* SOURCE: Vector IR (Left) */}
+                        <g transform="translate(50, 150)">
+                            {/* Source Container */}
+                            <rect x="0" y="0" width="240" height="300" rx="16" stroke="rgb(255 61 0)" strokeWidth="2" fill="rgb(9 9 11)" opacity="0.8" />
 
-                        {/* Telemetry HUD */}
-                        <div className="absolute bottom-6 left-6 right-6 flex justify-between font-mono text-[8px] text-text-secondary">
-                            <div className="flex flex-col">
-                                <span className="text-magma-start">VISCOSITY</span>
-                                <span>{(1.2 + heat / 50).toFixed(2)} cP</span>
-                            </div>
-                            <div className="flex flex-col text-right">
-                                <span className="text-magma-start">STRESS_GEOM</span>
-                                <span>{structure}% L_FIXED</span>
-                            </div>
-                        </div>
+                            {/* Molten Core Animation */}
+                            <motion.path
+                                d="M60 80 Q120 60 180 80 T180 220 Q120 240 60 220 T60 80"
+                                fill="rgb(255 61 0)"
+                                fillOpacity="0.1"
+                                stroke="rgb(255 61 0)"
+                                strokeWidth="1"
+                                strokeOpacity="0.3"
+                                animate={{
+                                    d: [
+                                        "M60 80 Q120 60 180 80 T180 220 Q120 240 60 220 T60 80",
+                                        "M70 70 Q130 70 170 90 T190 210 Q110 250 50 210 T70 70",
+                                        "M60 80 Q120 60 180 80 T180 220 Q120 240 60 220 T60 80"
+                                    ]
+                                }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            />
+
+                            {/* Source Label */}
+                            <text x="120" y="30" textAnchor="middle" fill="rgb(255 61 0)" fontSize="10" fontWeight="bold" fontFamily="monospace">
+                                VECTOR_IR_SOURCE
+                            </text>
+
+                            {/* Telemetry */}
+                            <text x="20" y="275" fill="rgb(113 113 122)" fontSize="7" fontFamily="monospace">IR_STABILITY: 0.9847</text>
+                            <text x="140" y="275" fill="rgb(113 113 122)" fontSize="7" fontFamily="monospace" textAnchor="end">EMIT_READY</text>
+                        </g>
+
+                        {/* COMPILER BEAM (Center) */}
+                        <g transform="translate(320, 285)">
+                            {/* Main Beam Path */}
+                            <motion.line
+                                x1="0"
+                                y1="15"
+                                x2="580"
+                                y2="15"
+                                stroke="url(#beam-gradient)"
+                                strokeWidth="3"
+                                filter="url(#glow)"
+                                animate={{ strokeOpacity: [0.5, 1, 0.5] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                            />
+
+                            {/* Data Packets */}
+                            <motion.circle cx="0" cy="15" r="4" fill="rgb(255 61 0)" filter="url(#glow)"
+                                animate={{ cx: [0, 580], opacity: [0, 1, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                            />
+                            <motion.circle cx="0" cy="15" r="4" fill="rgb(255 61 0)" filter="url(#glow)"
+                                animate={{ cx: [0, 580], opacity: [0, 1, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
+                            />
+
+                            {/* Compiler Label */}
+                            <text x="290" y="-10" textAnchor="middle" fill="rgb(255 61 0)" fontSize="9" fontWeight="900" fontFamily="monospace" letterSpacing="3">
+                                DETERMINISTIC_TRANSMISSION
+                            </text>
+                        </g>
+
+                        {/* OUTPUT TARGETS (Right - Grid Layout) */}
+                        <g transform="translate(950, 50)">
+
+                            {/* React (Web) */}
+                            <g transform="translate(0, 0)">
+                                <rect width="180" height="100" rx="8" stroke="rgb(113 113 122)" fill="rgb(9 9 11)" opacity="0.6" />
+                                <text x="90" y="55" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">REACT (WEB)</text>
+                                <text x="90" y="75" textAnchor="middle" fill="rgb(113 113 122)" fontSize="6" fontFamily="monospace">DOM / Tailwind</text>
+                            </g>
+
+                            {/* React Native */}
+                            <g transform="translate(200, 0)">
+                                <rect width="180" height="100" rx="8" stroke="rgb(113 113 122)" fill="rgb(9 9 11)" opacity="0.6" />
+                                <text x="90" y="55" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">REACT NATIVE</text>
+                                <text x="90" y="75" textAnchor="middle" fill="rgb(113 113 122)" fontSize="6" fontFamily="monospace">Yoga / Native Mod</text>
+                            </g>
+
+                            {/* Flutter */}
+                            <g transform="translate(0, 120)">
+                                <rect width="180" height="100" rx="8" stroke="rgb(113 113 122)" fill="rgb(9 9 11)" opacity="0.6" />
+                                <text x="90" y="55" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">FLUTTER</text>
+                                <text x="90" y="75" textAnchor="middle" fill="rgb(113 113 122)" fontSize="6" fontFamily="monospace">Skia / Impeller</text>
+                            </g>
+
+                            {/* SwiftUI */}
+                            <g transform="translate(200, 120)">
+                                <rect width="180" height="100" rx="8" stroke="rgb(113 113 122)" fill="rgb(9 9 11)" opacity="0.6" />
+                                <text x="90" y="55" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">SWIFTUI</text>
+                                <text x="90" y="75" textAnchor="middle" fill="rgb(113 113 122)" fontSize="6" fontFamily="monospace">VStack / ZStack</text>
+                            </g>
+
+                            {/* Compose */}
+                            <g transform="translate(100, 240)">
+                                <rect width="180" height="100" rx="8" stroke="rgb(113 113 122)" fill="rgb(9 9 11)" opacity="0.6" />
+                                <text x="90" y="55" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">COMPOSE</text>
+                                <text x="90" y="75" textAnchor="middle" fill="rgb(113 113 122)" fontSize="6" fontFamily="monospace">Modifier / Box</text>
+                            </g>
+                        </g>
+
+                        {/* Connection Lines */}
+                        <g stroke="rgb(255 61 0)" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.3">
+                            {/* To React */}
+                            <motion.path d="M900 300 L950 100" animate={{ strokeDashoffset: [0, 8] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} />
+                            {/* To RN */}
+                            <motion.path d="M900 300 L1150 100" animate={{ strokeDashoffset: [0, 8] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} />
+                            {/* To Flutter */}
+                            <motion.path d="M900 300 L950 220" animate={{ strokeDashoffset: [0, 8] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} />
+                            {/* To SwiftUI */}
+                            <motion.path d="M900 300 L1150 220" animate={{ strokeDashoffset: [0, 8] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} />
+                            {/* To Compose */}
+                            <motion.path d="M900 300 L1050 340" animate={{ strokeDashoffset: [0, 8] }} transition={{ duration: 0.5, repeat: Infinity, ease: "linear" }} />
+                        </g>
+
+                    </svg>
+                </div>
+
+                {/* Technical Summary */}
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div className="p-6 border border-zinc-border/30 rounded-lg">
+                        <div className="text-magma-start font-mono text-xs font-bold mb-2">ZERO TRANSLATION DRIFT</div>
+                        <div className="text-text-secondary text-sm">Binary-level deterministic emission ensures 1:1 fidelity from design intent to production code.</div>
                     </div>
-
-                    {/* Central Compilation Beam */}
-                    <div className="hidden lg:flex flex-col items-center justify-center gap-4">
-                        <div className="w-12 h-1 bg-gradient-to-r from-magma-start to-transparent animate-pulse" />
-                        <div className="text-[10px] font-black font-mono text-magma-start -rotate-90 py-12 tracking-[0.5em] whitespace-nowrap">
-                            COMPILING_STREAM
-                        </div>
-                        <div className="w-12 h-1 bg-gradient-to-r from-transparent to-magma-start animate-pulse" />
+                    <div className="p-6 border border-zinc-border/30 rounded-lg">
+                        <div className="text-magma-start font-mono text-xs font-bold mb-2">NATIVE PLATFORM PRIMITIVES</div>
+                        <div className="text-text-secondary text-sm">Direct emission to platform-specific component trees: DOM, UIKit, Compose.</div>
                     </div>
-
-                    {/* Output Targets */}
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-                        {targets.map((target, idx) => (
-                            <motion.div
-                                key={idx}
-                                className="forge-glass p-6 rounded-2xl border border-zinc-border/50 flex flex-col items-center group/card hover:border-magma-start/50 transition-all cursor-pointer"
-                                whileHover={{ y: -5 }}
-                            >
-                                <div className="w-full aspect-[3/4] mb-6 flex items-center justify-center p-4">
-                                    <div className="w-full h-full relative">
-                                        {target.icon}
-                                        {/* Glow Layer */}
-                                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-magma-start/10 blur-xl opacity-0 group-hover/card:opacity-100 transition-opacity" />
-                                    </div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-[9px] font-bold text-text-secondary mb-1 tracking-widest">{target.format}</div>
-                                    <div className="text-xs font-black text-white uppercase group-hover/card:magma-text transition-all">{target.name}</div>
-                                </div>
-                                {/* Technical Specs Hook */}
-                                <div className="mt-6 w-full pt-4 border-t border-zinc-border/30 flex justify-between font-mono text-[7px] text-zinc-600 opacity-60">
-                                    <span>PKG: {Math.floor(25 + Math.random() * 10)}KB</span>
-                                    <span>LAT: 12ms</span>
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="p-6 border border-zinc-border/30 rounded-lg">
+                        <div className="text-magma-start font-mono text-xs font-bold mb-2">LOSSLESS IR TRANSFORMATION</div>
+                        <div className="text-text-secondary text-sm">Maintains semantic integrity across all compilation stages and target platforms.</div>
                     </div>
                 </div>
             </div>

@@ -5,8 +5,8 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 export default function Ecosystem() {
     const products = [
         {
-            name: "Prod Control",
-            tag: "LOGISTICS_ENGINE",
+            name: "Design System Manager",
+            tag: "SYSTEM_ORCHESTRATOR",
             meta: "CORE_V4.8",
             color: "#FF3D00",
             icon: (
@@ -17,7 +17,7 @@ export default function Ecosystem() {
             )
         },
         {
-            name: "The Operator",
+            name: "Workflow Automator",
             tag: "AUTOMATION_KERNEL",
             meta: "SYNC_ACTIVE",
             color: "#FF9100",
@@ -30,8 +30,8 @@ export default function Ecosystem() {
             )
         },
         {
-            name: "ADR",
-            tag: "DECISION_LOG",
+            name: "Decision Tracker",
+            tag: "RECORD_LOG",
             meta: "TRACE_READ",
             color: "#FF3D00",
             icon: (
@@ -43,8 +43,8 @@ export default function Ecosystem() {
             )
         },
         {
-            name: "Codestellation",
-            tag: "INTELLIGENCE_GRID",
+            name: "Component Library",
+            tag: "ASSET_GRID",
             meta: "NODE_CLUSTER",
             color: "#FF9100",
             icon: (
@@ -57,13 +57,74 @@ export default function Ecosystem() {
         },
         {
             name: "System Zero",
-            tag: "ROOT_INFRA",
+            tag: "SYSTEM_BOOT_PROTOCOL",
             meta: "UPTIME_99.9",
             color: "#FF3D00",
             icon: (
                 <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="square" />
                     <path d="M12 22V12" opacity="0.4" />
+                </svg>
+            )
+        },
+        {
+            name: "Rust Compiler Target",
+            tag: "LOW_LEVEL_EMISSION",
+            meta: "MEM_SAFE_v1.7",
+            color: "#FF3D00",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M12 22V12M12 12l8-5M12 12L4 7" opacity="0.3" />
+                    <path d="M12 7l-5.33 2.66L12 12.33l5.33-2.67z" fill="currentColor" fillOpacity="0.2" />
+                </svg>
+            )
+        },
+        {
+            name: "LLM Bridge",
+            tag: "NATURAL_SYNTAX",
+            meta: "AI_RESOLVER",
+            color: "#FF9100",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path d="M9 10l3 3 3-3" />
+                </svg>
+            )
+        },
+        {
+            name: "Cloud Infra",
+            tag: "AWS_AZURE_GCP",
+            meta: "AUTO_DEPLOY",
+            color: "#FF3D00",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M17.5 19l-9.5-.01V12h9.5v7z M12 12V8M8 8h8M12 8l4-4M12 8L8 4" />
+                </svg>
+            )
+        },
+        {
+            name: "Security Guard",
+            tag: "HASH_VERIFY",
+            meta: "ENCRYPT_AES",
+            color: "#FF9100",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+            )
+        },
+        {
+            name: "Data Pipeline",
+            tag: "STREAM_PROC",
+            meta: "0_LATENCY",
+            color: "#FF3D00",
+            icon: (
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:text-magma-start transition-colors" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M3 13h18M3 7h18M3 19h18" strokeDasharray="2 2" />
+                    <circle cx="5" cy="13" r="1.5" fill="currentColor" />
+                    <circle cx="12" cy="7" r="1.5" fill="currentColor" />
+                    <circle cx="19" cy="19" r="1.5" fill="currentColor" />
                 </svg>
             )
         },
@@ -147,8 +208,9 @@ function EcosystemNode({ prop, index }: { prop: any, index: number }) {
                 </div>
 
                 {/* Status Indicator */}
-                <div className="absolute top-3 right-3 flex gap-1">
-                    <div className="w-1 h-1 rounded-full bg-magma-start opacity-30 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-3 right-3 flex items-center gap-1.5">
+                    <span className="text-[5px] font-mono text-magma-start opacity-0 group-hover:opacity-100 transition-opacity">UPLINK_OK</span>
+                    <div className="w-1 h-1 rounded-full bg-magma-start opacity-30 group-hover:opacity-100 transition-opacity shadow-[0_0_4px_var(--magma-start)]" />
                 </div>
 
                 {/* Metadata HUD (Visible on hover) */}

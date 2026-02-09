@@ -12,13 +12,38 @@ export default function FAQ() {
         },
         {
             id: "Q.002",
-            q: "What is the 'Heat' metaphor?",
-            a: "Heat represents the thermodynamic transformation of static logic into reactive matter. It is the core kinetic engine that drives our 'Iron' layout algorithm. High heat correlates with complex state transitions and high-frequency UI updates."
+            q: "Is this a design tool?",
+            a: "Yes. Forge integrates a pro-grade vector editor. Unlike traditional tools, your drawings are treated as structural logic and compiled instantly to React, SwiftUI, and Compose."
         },
         {
             id: "Q.003",
-            q: "Is Forge compliant with industrial standards?",
-            a: "Forge is natively built for the System Zero ecosystem, adhering to strict 'Iron' structural protocols. It supports high-integrity exports to standard web and mobile stacks while maintaining sub-millisecond latency in state propagation."
+            q: "How does Forge handle complex UI states?",
+            a: "Forge uses a high-performance reactivity engine that treats complex state transitions as kinetic energy. The higher the layout complexity, the more the engine prioritizes deterministic rendering and state synchronization to ensure a glitch-free interface."
+        },
+        {
+            id: "Q.004",
+            q: "How is this different from Figma or Penpot?",
+            a: "Figma and Penpot are design tools that export assets. Forge is a design tool that compiles code. Your drawings become the actual source of truth for your React, SwiftUI, and Compose components—no handoff, no drift."
+        },
+        {
+            id: "Q.005",
+            q: "Can I use Forge with custom component libraries?",
+            a: "Absolutely. Forge is built with extensibility at its core. You can define custom mapping rules for your own UI primitives, ensuring that your unique design system is compiled exactly as intended across all platforms."
+        },
+        {
+            id: "Q.006",
+            q: "How does Forge handle sensitive enterprise data?",
+            a: "Forge can be fully containerized and deployed on-prem. All compilation happens locally within your secure infrastructure. We do not ingest or transmit your proprietary vector data to external servers."
+        },
+        {
+            id: "Q.007",
+            q: "Can Forge handle large-scale design systems?",
+            a: "Yes. Forge is built for high-scale token management and component orchestration. It and can handle thousands of nodes with sub-millisecond latency, ensuring your massive design system remains performant during compilation."
+        },
+        {
+            id: "Q.008",
+            q: "Does Forge require an internet connection?",
+            a: "No. The Forge compiler operates entirely offline. Once licensed, you can design and emit code in air-gapped environments, ensuring maximum security and zero dependency on cloud availability."
         }
     ];
 

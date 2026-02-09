@@ -1,8 +1,8 @@
 export default function Team() {
     const members = [
-        { name: "Sylas Vane", role: "Chief Architect", vision: "Structure first, always." },
-        { name: "Kore Molten", role: "Heat Specialist", vision: "Complexity is just energy waiting to be compiled." },
-        { name: "Iron Maiden", role: "Logic Guard", vision: "If it's not strict, it's not Forge." },
+        { name: "Sylas Vane", role: "Vector Compiler Architect", vision: "Engineering zero-drift design-to-code pipelines for high-integrity native systems." },
+        { name: "Kore Molten", role: "Design System Engineer", vision: "Codifying visual intent into deterministic layout models across heterogenous platforms." },
+        { name: "Iron Maiden", role: "Determinism Lead", vision: "Ensuring binary-exact replication of design intent through formal layout verification." },
     ];
 
     return (

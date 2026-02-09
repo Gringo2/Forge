@@ -19,10 +19,10 @@ export default function Playground() {
                             [TERMINAL_SESSION_09] // PARAMETRIC_MODULATION
                         </h2>
                         <h3 className={`text-5xl md:text-6xl font-black text-white tracking-tighter transition-all duration-300 ${heat > 95 ? "text-stress scale-[0.98]" : ""}`}>
-                            System <span className="magma-text">Override.</span>
+                            Compiler <span className="magma-text">Stress Test.</span>
                         </h3>
                         <p className="mt-8 text-zinc-500 text-lg leading-relaxed max-w-xl font-medium">
-                            Forge is a reactive compiler. Manipulate the core thermodynamic and structural constants to stress-test the interface integrity.
+                            Forge is an integrated vector design platform. These controls simulate the real-time compilation engine that transforms your drawings into production code.
                         </p>
                     </div>
 
@@ -32,9 +32,9 @@ export default function Playground() {
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-magma-start uppercase flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-magma-start animate-pulse" />
-                                    THERMAL_INTENSITY
+                                    LAYOUT_COMPLEXITY
                                 </span>
-                                <span className="text-3xl font-mono text-white tracking-tighter tabular-nums">{heat}K</span>
+                                <span className="text-3xl font-mono text-white tracking-tighter tabular-nums">{heat}%</span>
                             </div>
                             <div className="relative h-12 flex items-center">
                                 {/* Tick marks */}
@@ -60,7 +60,7 @@ export default function Playground() {
                             <div className="flex justify-between items-center mb-4">
                                 <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-zinc-400 uppercase flex items-center gap-2">
                                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-500" />
-                                    STRCT_DENSITY
+                                    CONSTRAINT_STRICTNESS
                                 </span>
                                 <span className="text-3xl font-mono text-white tracking-tighter tabular-nums">{structure}%</span>
                             </div>
@@ -89,7 +89,7 @@ export default function Playground() {
                                 className={`w-full py-5 font-mono text-[10px] font-black tracking-[0.4em] uppercase border-2 transition-all duration-500 overflow-hidden relative group shadow-2xl ${heat > 95 ? "bg-magma-start text-white border-magma-start animate-pulse" : "border-zinc-800 text-zinc-500 hover:border-magma-start hover:text-magma-start"}`}
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-4">
-                                    {heat > 95 ? "SYSTEM_SUPERCRITICAL" : "INITIATE_THERMAL_STRESS"}
+                                    {heat > 95 ? "COMPILER_OVERLOAD" : "INITIATE_COMPILER_STRESS"}
                                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
                                         <path d="M13 2L3 14h9v8l10-12h-9l10-10z" />
                                     </svg>

@@ -1,48 +1,62 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSystem } from "@/context/SystemContext";
 import { motion } from "framer-motion";
 
 export default function DashboardPreview() {
     const { heat } = useSystem();
-    const [lines, setLines] = useState<string[]>([
-        "> FORGE_COMPILER_V3_INIT",
-        "> LOADING_MODULES...",
-        "> CORE_SERVICES: OK",
-    ]);
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const [activeShape, setActiveShape] = useState<"rect" | "circle" | "text">("rect");
+    const [codeLines, setCodeLines] = useState<string[]>([]);
+    const [coords, setCoords] = useState({ x: 0, y: 0 });
+    const [logs, setLogs] = useState<string[]>(["[SYS] COMPILER_IDLE", "[SYS] READY_FOR_INPUT"]);
 
-    // Terminal Typewriter Effect
+    const handleCanvasMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        setCoords({
+            x: Math.floor(e.clientX - rect.left),
+            y: Math.floor(e.clientY - rect.top)
+        });
+    };
+
+    // Simulate code generation based on active shape
     useEffect(() => {
-        const interval = setInterval(() => {
-            const msgs = [
-                `> OPTIMIZING_ROUTE: 0x${Math.floor(Math.random() * 9999).toString(16)}`,
-                `> HEAT_DISSIPATION: ${heat}%`,
-                "> COMPILING_TARGET: REACT_NATIVE",
-                "> COMPILING_TARGET: FLUTTER",
-                "> SYNCING_NODES...",
-                `> ALLOCATING_MEMORY: ${Math.floor(Math.random() * 500)}MB`
-            ];
-            const newMsg = msgs[Math.floor(Math.random() * msgs.length)];
+        const shapeToCode = {
+            rect: [
+                '<Button',
+                '  className="px-4 py-2 rounded-lg"',
+                '  variant="primary"',
+                '>',
+                '  Click Me',
+                '</Button>'
+            ],
+            circle: [
+                '<Avatar',
+                '  size="md"',
+                '  src="/user.png"',
+                '  className="rounded-full"',
+                '/>'
+            ],
+            text: [
+                '<Text',
+                '  variant="heading"',
+                '  className="text-2xl font-bold"',
+                '>',
+                '  Hello World',
+                '</Text>'
+            ]
+        };
 
-            setLines(prev => {
-                const newLines = [...prev, newMsg];
-                if (newLines.length > 8) return newLines.slice(1);
-                return newLines;
-            });
+        setCodeLines(shapeToCode[activeShape]);
 
-        }, 1200 - (heat * 10)); // Speed up with heat
-
-        return () => clearInterval(interval);
-    }, [heat]);
-
-    // Auto-scroll terminal
-    useEffect(() => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-        }
-    }, [lines]);
+        // Add compile log
+        setLogs(prev => [
+            ...prev.slice(-3),
+            `[COMP] ${activeShape.toUpperCase()}_EMISSION_START`,
+            `[IR] NODES_GENERATED: ${Math.floor(Math.random() * 50 + 20)}`,
+            `[SYS] EMIT_SUCCESS`
+        ]);
+    }, [activeShape]);
 
     return (
         <div className="w-full h-full bg-void rounded-xl border border-zinc-border overflow-hidden flex flex-col shadow-2xl relative group/dashboard">
@@ -56,92 +70,192 @@ export default function DashboardPreview() {
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-600 group-hover/controls:bg-yellow-500 transition-colors duration-300 delay-75" />
                     <div className="w-2.5 h-2.5 rounded-full bg-zinc-600 group-hover/controls:bg-green-500 transition-colors duration-300 delay-150" />
                 </div>
-                <div className="text-[10px] uppercase font-mono text-text-secondary tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-magma-start animate-pulse" />
-                    Forge_Studio.exe
+                <div className="text-[10px] uppercase font-mono text-text-secondary tracking-widest flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-magma-start animate-pulse" />
+                        Vector_Engine.forge
+                    </div>
+                    <div className="px-2 py-0.5 border border-magma-start/30 text-magma-start text-[8px] font-black rounded bg-magma-start/5 animate-pulse">
+                        AI_SYNTHESIS_ACTIVE
+                    </div>
                 </div>
                 <div className="w-8" />
             </div>
 
-            {/* Main Content Area */}
+            {/* Main Split View */}
             <div className="flex-1 flex overflow-hidden relative z-30">
-                {/* Sidebar */}
-                <div className="w-12 border-r border-zinc-border flex flex-col items-center py-4 gap-4 bg-surface/50">
-                    {["F", "P", "A", "S"].map((i) => (
-                        <div key={i} className="w-8 h-8 rounded-lg bg-surface border border-zinc-border flex items-center justify-center text-[10px] text-text-secondary font-mono hover:text-magma-start hover:border-magma-start cursor-pointer transition-colors relative group/icon">
-                            {i}
-                            <div className="absolute left-full ml-2 px-2 py-1 bg-zinc-800 text-white text-[9px] rounded opacity-0 group-hover/icon:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">
-                                Module {i}
-                            </div>
+                {/* LEFT: Vector Canvas Simulator */}
+                <div
+                    className="flex-1 bg-[#0D0E11] relative overflow-hidden border-r border-zinc-border cursor-crosshair"
+                    onMouseMove={handleCanvasMouseMove}
+                >
+                    {/* Canvas Grid */}
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
+                            {Array.from({ length: 144 }).map((_, i) => (
+                                <div key={i} className="border-[0.5px] border-zinc-700" />
+                            ))}
                         </div>
-                    ))}
+                    </div>
+
+                    <div className="absolute top-4 left-4 flex gap-6 items-center">
+                        <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest">
+                            VECTOR_CANVAS
+                        </div>
+                        <div className="text-[9px] font-mono text-magma-start flex gap-3">
+                            <span>X: {coords.x}</span>
+                            <span>Y: {coords.y}</span>
+                        </div>
+                    </div>
+
+                    {/* Shape Toolbar */}
+                    <div className="absolute top-4 right-4 flex gap-2 bg-surface/80 backdrop-blur-sm border border-zinc-border/50 rounded-lg p-2">
+                        <button
+                            onClick={() => setActiveShape("rect")}
+                            className={`w-8 h-8 rounded flex items-center justify-center transition-all ${activeShape === "rect"
+                                ? "bg-magma-start text-void"
+                                : "bg-void text-zinc-500 hover:text-white"
+                                }`}
+                        >
+                            <svg viewBox="0 0 16 16" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <rect x="3" y="3" width="10" height="10" rx="2" />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={() => setActiveShape("circle")}
+                            className={`w-8 h-8 rounded flex items-center justify-center transition-all ${activeShape === "circle"
+                                ? "bg-magma-start text-void"
+                                : "bg-void text-zinc-500 hover:text-white"
+                                }`}
+                        >
+                            <svg viewBox="0 0 16 16" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <circle cx="8" cy="8" r="5" />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={() => setActiveShape("text")}
+                            className={`w-8 h-8 rounded flex items-center justify-center transition-all ${activeShape === "text"
+                                ? "bg-magma-start text-void"
+                                : "bg-void text-zinc-500 hover:text-white"
+                                }`}
+                        >
+                            <svg viewBox="0 0 16 16" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <path d="M4 3h8M8 3v10M6 13h4" strokeLinecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Drawn Shape */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <motion.div
+                            key={activeShape}
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.3 }}
+                            className="relative"
+                        >
+                            {activeShape === "rect" && (
+                                <div className="w-32 h-16 rounded-lg border-2 border-magma-start bg-magma-start/10 flex items-center justify-center">
+                                    <span className="text-xs text-white font-medium">Button</span>
+                                </div>
+                            )}
+                            {activeShape === "circle" && (
+                                <div className="w-24 h-24 rounded-full border-2 border-blue-500 bg-blue-500/10 flex items-center justify-center">
+                                    <span className="text-xs text-white font-medium">Avatar</span>
+                                </div>
+                            )}
+                            {activeShape === "text" && (
+                                <div className="text-2xl font-bold text-white">
+                                    Hello World
+                                </div>
+                            )}
+                        </motion.div>
+                    </div>
+
+                    {/* Compilation Arrow */}
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-50">
+                        <motion.div
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ repeat: Infinity, duration: 1.5 }}
+                            className="w-8 h-8 rounded-full bg-magma-start flex items-center justify-center shadow-[0_0_20px_rgba(255,61,0,0.5)]"
+                        >
+                            <svg viewBox="0 0 16 16" className="w-4 h-4 text-void" fill="currentColor">
+                                <path d="M6 3l6 5-6 5V3z" />
+                            </svg>
+                        </motion.div>
+                    </div>
                 </div>
 
-                {/* Code Editor */}
-                <div className="flex-1 bg-[#0D0E11] p-6 font-mono text-[10px] md:text-xs text-text-secondary leading-loose overflow-hidden relative">
-                    <div className="absolute top-0 right-0 p-2 text-zinc-700 select-none text-[9px]">MODE: READ_ONLY</div>
-                    <span className="text-magma-start">import</span> Forge <span className="text-magma-start">from</span> <span className="text-green-500">'@sys-zero/forge'</span>;
-                    <br />
-                    <br />
-                    <span className="text-blue-400">export default</span> <span className="text-magma-start">function</span> <span className="text-yellow-400">Interface</span>() {"{"}
-                    <br />
-                    &nbsp;&nbsp;<span className="text-magma-start">const</span> heat = <span className="text-purple-400">useThermalState</span>();
-                    <br />
-                    &nbsp;&nbsp;<span className="text-magma-start">return</span> (
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;{"<"}<span className="text-yellow-400">Container</span> heat={"{"}heat{"}"}{">"}
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"<"}<span className="text-yellow-400">StructuralGrid</span> / {">"}
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"<"}<span className="text-yellow-400">Emitter</span> intensity={"{"}<span className="text-blue-400">0.8</span>{"}"} / {">"}
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;{"</"}<span className="text-yellow-400">Container</span>{">"}
-                    <br />
-                    &nbsp;&nbsp;);
-                    <br />
-                    {"}"}
+                {/* RIGHT: Generated Code */}
+                <div className="flex-1 bg-[#0D0E11] p-6 font-mono text-xs text-text-secondary leading-loose overflow-hidden relative">
+                    <div className="absolute top-4 right-4 text-zinc-700 select-none text-[9px] uppercase tracking-widest">
+                        REACT_OUTPUT
+                    </div>
+
+                    <motion.div
+                        key={activeShape}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        {codeLines.map((line, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="mb-1"
+                            >
+                                {line.includes("<") ? (
+                                    <>
+                                        <span className="text-zinc-600">{line.match(/^\s*/)?.[0]}</span>
+                                        <span className="text-blue-400">{line.match(/<\/?[A-Z][a-zA-Z]*/)?.[0]}</span>
+                                        <span className="text-purple-400">{line.match(/\s+\w+=/g)?.join("")}</span>
+                                        <span className="text-green-400">{line.match(/"[^"]*"/g)?.join("")}</span>
+                                        <span className="text-white">{line.match(/[>{}]/g)?.join("")}</span>
+                                    </>
+                                ) : (
+                                    <span className="text-zinc-400">{line}</span>
+                                )}
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
                     <motion.div
                         className="w-1.5 h-4 bg-magma-start inline-block ml-1 shadow-[0_0_8px_rgba(255,61,0,0.8)]"
                         animate={{ opacity: [1, 0] }}
                         transition={{ repeat: Infinity, duration: 0.8 }}
                     />
-                </div>
 
-                {/* Visual Preview (Right Split) */}
-                <div className="w-1/3 border-l border-zinc-border bg-surface relative overflow-hidden hidden md:block group/graph">
-                    <div className="absolute inset-0 bg-void/50 grid grid-cols-6 grid-rows-6 opacity-30">
-                        {Array.from({ length: 36 }).map((_, i) => (
-                            <div key={i} className="border-[0.5px] border-zinc-border/10" />
-                        ))}
-                    </div>
-
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="relative">
-                            <motion.div
-                                className="w-20 h-20 rounded-xl border border-magma-start bg-magma-start/10 backdrop-blur-sm"
-                                animate={{ scale: [1, 1.05, 1], rotate: heat > 90 ? [0, 2, -2, 0] : 0 }}
-                                transition={{ duration: 2 - (heat / 100) }}
-                            />
-                            {/* Connecting Nodes */}
-                            <div className="absolute -top-12 left-1/2 w-0.5 h-12 bg-zinc-border -translate-x-1/2" />
-                            <div className="absolute -bottom-12 left-1/2 w-0.5 h-12 bg-zinc-border -translate-x-1/2" />
-
-                            <motion.div
-                                className="absolute -top-14 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover/graph:scale-150 transition-transform"
-                                animate={{ scale: [1, 1.2, 1] }}
-                                transition={{ repeat: Infinity, duration: 1.5 }}
-                            />
+                    {/* Live Logs Overlay */}
+                    <div className="absolute bottom-4 left-6 right-6">
+                        <div className="flex flex-col gap-1">
+                            {logs.map((log, i) => (
+                                <div key={i} className="text-[8px] font-mono text-zinc-600 uppercase tracking-tight flex gap-2">
+                                    <span className="text-zinc-800">[{1240 + i}]</span>
+                                    <span className={log.includes("SUCCESS") ? "text-magma-start" : ""}>{log}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Bottom Terminal */}
-            <div className="h-32 border-t border-zinc-border bg-[#0D0E11] p-3 font-mono text-[9px] text-zinc-400 overflow-y-auto relative z-30" ref={scrollRef}>
-                {lines.map((line, i) => (
-                    <div key={i} className="mb-1 border-l-2 border-transparent hover:border-zinc-700 pl-2 transition-colors">{line}</div>
-                ))}
-                <div className="animate-pulse text-magma-start">_</div>
+            {/* Bottom Status Bar */}
+            <div className="h-8 border-t border-zinc-border bg-surface/50 backdrop-blur-sm px-4 flex items-center justify-between text-[9px] font-mono text-zinc-500 uppercase tracking-widest relative z-30">
+                <div className="flex items-center gap-4">
+                    <span className="text-magma-start">● COMPILING</span>
+                    <span>SHAPE: {activeShape.toUpperCase()}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <span>HEAT: {heat}%</span>
+                    <div className="w-12 h-1 bg-zinc-800 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-magma-start transition-all duration-300"
+                            style={{ width: `${heat}%` }}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );

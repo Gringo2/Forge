@@ -2,15 +2,16 @@ export default function ProcessFlow() {
     const steps = [
         {
             number: "01",
-            title: "Symbolic Specification",
-            description: "Declare interface logic using a strictly-typed reactive DSL. Forge maps state invariants across the platform boundary.",
+            title: "Semantic AI Input",
+            description: "Initialize your view with a high-fidelity text prompt or direct vector definition. Forge's AI engine synthesizes layout intent into structured SVG IR.",
             image: (
                 <div className="w-full h-full bg-zinc-900/50 flex items-center justify-center p-8">
-                    <div className="font-mono text-sm text-magma-start bg-void p-6 rounded border border-zinc-border/50 w-full shadow-inner">
-                        <span className="text-zinc-500 opacity-50">// SYMBOLIC_DECLARATION</span><br />
-                        <span className="text-blue-400">const</span> <span className="text-white">ForgeCore</span> = <span className="text-yellow-400">compile</span>(&#123;<br />
-                        &nbsp;&nbsp;platform: <span className="text-green-400">'MULTI_TARGET'</span>,<br />
-                        &nbsp;&nbsp;state: <span className="text-magma-start">HEAT_DYNAMIC</span><br />
+                    <div className="font-mono text-sm text-magma-start bg-void p-6 rounded border border-zinc-border/50 w-full shadow-inner relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-2 text-[8px] bg-magma-start/10 text-magma-start border-l border-b border-zinc-border/50 font-bold">AI_SYNTHESIS_ACTIVE</div>
+                        <span className="text-zinc-500 opacity-50">// VIBEDRAW_INITIALIZATION</span><br />
+                        <span className="text-blue-400">const</span> <span className="text-white">Intent</span> = <span className="text-yellow-400">await</span> <span className="text-magma-start">forge.ai.synthesis</span>(&#123;<br />
+                        &nbsp;&nbsp;prompt: <span className="text-green-400">'Modern Dashboard with 5x5 Grid'</span>,<br />
+                        &nbsp;&nbsp;fidelity: <span className="text-magma-start">MAX_PRODUCTION</span><br />
                         &#125;);
                     </div>
                 </div>
@@ -18,8 +19,8 @@ export default function ProcessFlow() {
         },
         {
             number: "02",
-            title: "Thermal Orchestration",
-            description: "The Iron Engine analyzes the dependency graph, optimizing for deterministic execution and zero memory leakage.",
+            title: "Layout Logic Synthesis",
+            description: "Our geometry engine performs zero-latency synthesis of flexbox and grid logic based on vector spatial relationships.",
             image: (
                 <div className="w-full h-full bg-zinc-900/50 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 grid grid-cols-10 grid-rows-10 opacity-10">
@@ -35,21 +36,21 @@ export default function ProcessFlow() {
         },
         {
             number: "03",
-            title: "Targeted Transmission",
-            description: "Binary-equivalent compilation to React, React Native, and Flutter. Zero-overhead deployment to any production environment.",
+            title: "Direct Repository Emission",
+            description: "The pipeline concludes by injecting deterministic code directly into your GitHub, GitLab, or local repository. Zero translation drift, zero handoff.",
             image: (
                 <div className="w-full h-full bg-zinc-900/50 flex items-center justify-center p-8">
                     <div className="flex flex-col gap-4 w-full">
                         <div className="flex justify-between items-center px-4 py-2 bg-void border border-zinc-border/50 rounded-lg group-hover:border-magma-start transition-colors">
-                            <span className="font-mono text-[10px] text-text-secondary uppercase">Target: REACT_WEB</span>
-                            <span className="text-magma-start text-[10px] animate-pulse">● COMPILING</span>
+                            <span className="font-mono text-[10px] text-zinc-400 uppercase">REPO: forge-system-v3</span>
+                            <span className="text-magma-start text-[10px] animate-pulse">● SYNC_IN_PROGRESS</span>
                         </div>
                         <div className="flex justify-between items-center px-4 py-2 bg-void border border-zinc-border/50 rounded-lg opacity-50 group-hover:opacity-100 transition-opacity">
-                            <span className="font-mono text-[10px] text-text-secondary uppercase">Target: REACT_NATIVE</span>
-                            <span className="text-magma-start text-[10px]">● SYNCING</span>
+                            <span className="font-mono text-[10px] text-zinc-400 uppercase">TARGET: master/src/views</span>
+                            <span className="text-magma-start text-[10px]">● EMITTING</span>
                         </div>
                         <div className="flex justify-between items-center px-4 py-2 bg-void border border-zinc-border/50 rounded-lg opacity-30 group-hover:opacity-100 transition-opacity">
-                            <span className="font-mono text-[10px] text-text-secondary uppercase">Target: FLUTTER</span>
+                            <span className="font-mono text-[10px] text-zinc-400 uppercase">COMMIT: d2f8e1a_UI_UPDATE</span>
                             <span className="text-magma-start text-[10px]">● READY</span>
                         </div>
                     </div>

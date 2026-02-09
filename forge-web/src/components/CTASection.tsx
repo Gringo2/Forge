@@ -14,12 +14,12 @@ export default function CTASection() {
                     viewport={{ once: true }}
                     className="space-y-6"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-tight">
-                        Ready to <br />
-                        <span className="magma-text font-serif italic">Heat the Iron?</span>
+                    <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
+                        THE END OF HANDOFF. <br />
+                        <span className="magma-text">THE START OF EMISSION.</span>
                     </h2>
                     <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
-                        Stop drawing interfaces. Start compiling them. Join the next generation of coordinate-driven interface design.
+                        The start and end of your UI lifecycle. Design your product intent and emit directly into your repository. Eliminate translation drift forever.
                     </p>
                 </motion.div>
 
@@ -48,7 +48,7 @@ export default function CTASection() {
                     </div>
                     <div className="flex items-center gap-2 group cursor-default">
                         <div className="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-magma-start transition-colors" />
-                        <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors text-zinc-500">No Artboards Required</span>
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors text-zinc-500">Coordinate-Driven Design</span>
                     </div>
                 </div>
             </div>

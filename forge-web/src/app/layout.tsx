@@ -22,9 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Forge | The Interface Compiler",
-  description: "A reactive UI compiler for high-performance web applications.",
+  title: "Forge | Integrated Vector Design Platform",
+  description: "The first vector design environment that compiles directly to production code. Draw in the native engine, compile to React, SwiftUI, and Compose.",
 };
+
+import StructuralInsight from "@/components/StructuralInsight";
 
 export default function RootLayout({
   children,
@@ -39,6 +41,7 @@ export default function RootLayout({
           <main className="min-h-screen relative z-10">
             {children}
           </main>
+          <StructuralInsight />
           <SystemFooter />
         </AppRegistry>
       </body>

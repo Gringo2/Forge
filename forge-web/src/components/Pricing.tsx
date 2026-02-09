@@ -5,26 +5,26 @@ import { motion } from "framer-motion";
 export default function Pricing() {
     const contracts = [
         {
-            name: "DEVELOPER_LICENSE",
+            name: "PHASE_1_UI_COMPILER",
             model: "NODE_LOCKED",
-            spec: "Indiv. Research Environment",
+            spec: "Vector to React Pipeline",
             terms: ["1x Project Context", "Web (React) Export", "Standard Reactivity", "Void Export Access"],
             cta: "Acquire License",
             highlight: false
         },
         {
-            name: "INDUSTRIAL_CONTRACT",
+            name: "PHASE_2_DESIGN_SYSTEM",
             model: "TEAM_WIDE",
-            spec: "Production Grade Tools",
-            terms: ["∞ Project Context", "Web + Mobile (Flutter) Export", "Advanced Heat Vectoring", "High-Priority Transmission"],
+            spec: "Token Extraction + Multi-Platform",
+            terms: ["∞ Project Context", "Web + Mobile (Flutter) Export", "Complex Layout Computation", "High-Priority Transmission"],
             cta: "Execute Contract",
             highlight: true
         },
         {
-            name: "INFRASTRUCTURE_PARTNER",
+            name: "PHASE_3_SYSTEM_ZERO",
             model: "ECOSYSTEM_WIDE",
-            spec: "Deep-Scale Integration",
-            terms: ["Proprietary Compilers", "Full Multi-Platform Sync", "Thermal Recovery Support", "On-Prem Transmission"],
+            spec: "Backend Binding + Full Automation",
+            terms: ["Proprietary Compilers", "Full Multi-Platform Sync", "System Recovery Support", "On-Prem Transmission"],
             cta: "Establish Link",
             highlight: false
         }

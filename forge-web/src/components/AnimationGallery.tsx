@@ -8,9 +8,9 @@ export default function AnimationGallery() {
 
     const animations = [
         {
-            name: "Layout Stamping Engine",
-            tag: "STRUCTURAL_ALIGNMENT",
-            telemetry: `TOLERANCE: ${(0.001 + (100 - structure) / 5000).toFixed(4)}mm`,
+            name: "Geometric Constraint Parser",
+            tag: "GEOMETRY_PARSING",
+            telemetry: `DOM_DEPTH: ${Math.floor(6 + structure / 20)} layers`,
             content: (
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                     {/* The "Iron" Wireframe Grid */}
@@ -40,9 +40,9 @@ export default function AnimationGallery() {
             )
         },
         {
-            name: "Style Fusion Arc",
-            tag: "VISUAL_FUSION",
-            telemetry: `PROP_SYNC: ${(85 + heat / 8).toFixed(1)}%`,
+            name: "Design System Resolver",
+            tag: "TOKEN_MAPPING",
+            telemetry: `TOKEN_ACCURACY: ${(98 + heat / 50).toFixed(2)}%`,
             content: (
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                     {/* CSS Line */}
@@ -71,9 +71,9 @@ export default function AnimationGallery() {
             )
         },
         {
-            name: "Logic Sync Core",
-            tag: "LATENCY_DISSOLUTION",
-            telemetry: `SYNC_LATENCY: ${(12 - heat / 10).toFixed(2)}ms`,
+            name: "Relational Logic Parser",
+            tag: "RELATION_PARSING",
+            telemetry: `NODE_COUNT: ${Math.floor(12 + structure / 5)} units`,
             content: (
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                     <circle cx="50" cy="50" r="40" fill="none" stroke="#1F2937" strokeWidth="1" strokeDasharray="10 5" />
@@ -99,9 +99,9 @@ export default function AnimationGallery() {
             )
         },
         {
-            name: "Platform Extruder",
-            tag: "BINARY_EXTRUSAL",
-            telemetry: `READY_STATE: ${Math.floor(heat + structure / 2)}%`,
+            name: "Platform Component Emitter",
+            tag: "TRANS_EMISSION",
+            telemetry: `PKG_SIZE: ${(structure * 1.2 + heat / 2).toFixed(1)}KB`,
             content: (
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                     {/* Platform Tray */}

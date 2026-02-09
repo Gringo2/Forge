@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BentoGrid from "@/components/BentoGrid";
@@ -16,26 +18,42 @@ import CursorGlow from "@/components/CursorGlow";
 import ScrollTemperature from "@/components/ScrollTemperature";
 import StatusTicker from "@/components/StatusTicker";
 
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import SystemBoot from "@/components/SystemBoot";
+import SystemAuditory from "@/components/SystemAuditory";
+
 export default function Home() {
+  const [isBooted, setIsBooted] = useState(false);
+
   return (
-    <main className="min-h-screen bg-void selection:bg-magma-start/30">
-      <CursorGlow />
-      <ScrollTemperature />
-      <Navbar />
-      <Hero />
-      <StatusTicker />
-      <BentoGrid />
-      <ProcessFlow />
-      <TargetOutput />
-      <AnimationGallery />
-      <Ecosystem />
-      <Testimonials />
-      <Team />
-      <FAQ />
-      <Playground />
-      <Pricing />
-      <CTASection />
-      <Footer />
+    <main className="min-h-screen bg-void selection:bg-magma-start/30 overflow-hidden">
+      <AnimatePresence mode="wait">
+        {!isBooted && (
+          <SystemBoot key="boot" onBootComplete={() => setIsBooted(true)} />
+        )}
+      </AnimatePresence>
+
+      <div className={!isBooted ? "hidden" : "contents"}>
+        <CursorGlow />
+        <ScrollTemperature />
+        <SystemAuditory />
+        <Navbar />
+        <Hero />
+        <StatusTicker />
+        <BentoGrid />
+        <ProcessFlow />
+        <TargetOutput />
+        <Playground />
+        <AnimationGallery />
+        <Testimonials />
+        <Ecosystem />
+        <Pricing />
+        <FAQ />
+        <Team />
+        <CTASection />
+        <Footer />
+      </div>
 
       {/* Scroll Background Decorations */}
       <div className="fixed inset-0 pointer-events-none -z-10">
